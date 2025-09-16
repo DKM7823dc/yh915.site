@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سياسة الخصوصية | إشارات الأسهم النخبة</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-blue': '#0A0E1A',
+                        'dark-blue': '#1A1F2E',
+                        'accent-yellow': '#FFD700',
+                        'light-yellow': '#FFF8DC',
+                        'gray-text': '#B8BCC5',
+                        'electric-blue': '#00D4FF',
+                        'neon-green': '#39FF14',
+                        'cyber-purple': '#8A2BE2'
+                    },
+                    fontFamily: {
+                        'arabic': ['Noto Sans Arabic', 'sans-serif']
+                    }
+                }
+            }
+        }
+
+        // Dark mode detection
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // Smooth scroll to sections
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Noto Sans Arabic', sans-serif;
+            line-height: 1.8;
+        }
+        
+        .gradient-bg {
+            background: radial-gradient(ellipse at top, #1a1f2e 0%, #0a0e1a 50%, #000000 100%);
+            position: relative;
+        }
+        
+        .gradient-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 212, 255, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .elite-card {
+            background: linear-gradient(145deg, rgba(26, 31, 46, 0.95), rgba(10, 14, 26, 0.9));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .section-card {
+            background: linear-gradient(145deg, rgba(26, 31, 46, 0.8), rgba(10, 14, 26, 0.7));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .section-card:hover {
+            border-color: rgba(255, 215, 0, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .neon-text {
+            text-shadow: 0 0 3px currentColor;
+        }
+
+        .text-highlight {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-item {
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 215, 0, 0.1);
+            color: #FFD700;
+        }
+
+        .table-of-contents {
+            position: sticky;
+            top: 2rem;
+        }
+
+        .content-section {
+            scroll-margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .table-of-contents {
+                position: static;
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body class="gradient-bg text-white font-arabic relative min-h-screen">
+    
+    <!-- Header -->
+    <header class="py-6 px-4 border-b border-gray-700/50 relative z-10">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex justify-between items-center">
+                <h1 class="text-2xl md:text-3xl font-black text-accent-yellow neon-text">إشارات الأسهم النخبة</h1>
+                <button onclick="window.history.back()" class="bg-accent-yellow/20 hover:bg-accent-yellow/30 text-accent-yellow px-4 py-2 rounded-lg transition-all duration-300">
+                    العودة للصفحة الرئيسية
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="py-8 md:py-16 px-4 relative z-10">
+        <div class="max-w-6xl mx-auto">
+            
+            <!-- Page Title -->
+            <div class="text-center mb-8 md:mb-16">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-black mb-4 md:mb-6 leading-tight">
+                    <span class="text-highlight">سياسة الخصوصية</span>
+                </h1>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    نحن نحترم خصوصيتك ونلتزم بحماية معلوماتك الشخصية. تشرح هذه السياسة كيفية جمع واستخدام وحماية بياناتك.
+                </p>
+                <div class="mt-6 text-gray-400">
+                    <p>آخر تحديث: يناير 2025</p>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-4 gap-8">
+                
+                <!-- Table of Contents -->
+                <div class="lg:col-span-1">
+                    <div class="table-of-contents">
+                        <div class="elite-card p-6 rounded-2xl">
+                            <h3 class="text-xl font-bold mb-4 text-accent-yellow">المحتويات</h3>
+                            <nav class="space-y-2">
+                                <a href="#section-1" onclick="scrollToSection('section-1')" class="nav-item block text-gray-300 hover:text-accent-yellow cursor-pointer">1. المعلومات التي نجمعها</a>
+                                <a href="#section-2" onclick="scrollToSection('section-2')" class="nav-item block text-gray-300 hover:text-accent-yellow cursor-pointer">2. كيفية استخدام المعلومات</a>
+                                <a href="#section-3" onclick="scrollToSection('section-3')" class="nav-item block text-gray-300 hover:text-accent-yellow cursor-pointer">3. مشاركة المعلومات</a>
+                                <a href="#section-4" onclick="scrollToSection('section-4')" class="nav-item block text-gray-300 hover:text-accent-yellow cursor-pointer">4. أمان البيانات</a>
+                                <a href="#section-5" onclick="scrollToSection('section-5')" class="nav-item block text-gray-300 hover:text-accent-yellow cursor-pointer">5. ملفات تعريف الارتباط</a>
+                                <a href="#section-6" onclick="scrollToSection('section-6')" class="nav-item block text-gray-300 hover:text-accent-yellow cursor-pointer">6. حقوقك</a>
+                                <a href="#section-7" onclick="scrollToSection('section-7')" class="nav-item block text-gray-300 hover:text-accent-yellow cursor-pointer">7. الخدمات الخارجية</a>
+                                <a href="#section-8" onclick="scrollToSection('section-8')" class="nav-item block text-gray-300 hover:text-accent-yellow cursor-pointer">8. الاحتفاظ بالبيانات</a>
+                                <a href="#section-9" onclick="scrollToSection('section-9')" class="nav-item block text-gray-300 hover:text-accent-yellow cursor-pointer">9. حماية الأطفال</a>
+                                <a href="#section-10" onclick="scrollToSection('section-10')" class="nav-item block text-gray-300 hover:text-accent-yellow cursor-pointer">10. التغييرات على السياسة</a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="lg:col-span-3 space-y-8">
+                    
+                    <!-- Section 1 -->
+                    <section id="section-1" class="content-section">
+                        <div class="section-card p-6 md:p-8 rounded-2xl">
+                            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-accent-yellow">1. المعلومات التي نجمعها</h2>
+                            <div class="space-y-4 text-gray-300">
+                                <div>
+                                    <h3 class="text-xl font-semibold mb-3 text-electric-blue">المعلومات الشخصية</h3>
+                                    <ul class="space-y-2 mr-6">
+                                        <li>• الاسم والبريد الإلكتروني</li>
+                                        <li>• رقم الهاتف (اختياري)</li>
+                                        <li>• معلومات الحساب والملف الشخصي</li>
+                                        <li>• تفضيلات الاستثمار والمخاطر</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-semibold mb-3 text-electric-blue">المعلومات التقنية</h3>
+                                    <ul class="space-y-2 mr-6">
+                                        <li>• عنوان IP ونوع المتصفح</li>
+                                        <li>• معلومات الجهاز ونظام التشغيل</li>
+                                        <li>• سجلات الاستخدام والأنشطة</li>
+                                        <li>• ملفات تعريف الارتباط وتقنيات التتبع</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-semibold mb-3 text-electric-blue">المعلومات المالية</h3>
+                                    <ul class="space-y-2 mr-6">
+                                        <li>• معلومات الدفع (مشفرة وآمنة)</li>
+                                        <li>• تاريخ المعاملات</li>
+                                        <li>• تفضيلات الاستثمار</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Section 2 -->
+                    <section id="section-2" class="content-section">
+                        <div class="section-card p-6 md:p-8 rounded-2xl">
+                            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-accent-yellow">2. كيفية استخدام المعلومات</h2>
+                            <div class="space-y-4 text-gray-300">
+                                <p>نستخدم معلوماتك للأغراض التالية:</p>
+                                <ul class="space-y-3 mr-6">
+                                    <li>• <strong class="text-electric-blue">تقديم الخدمات:</strong> إرسال إشارات التداول والتحليلات المالية</li>
+                                    <li>• <strong class="text-electric-blue">تحسين الخدمة:</strong> تطوير وتحسين منصتنا وخدماتنا</li>
+                                    <li>• <strong class="text-electric-blue">التواصل:</strong> إرسال التحديثات والإشعارات المهمة</li>
+                                    <li>• <strong class="text-electric-blue">الأمان:</strong> حماية حسابك ومنع الاحتيال</li>
+                                    <li>• <strong class="text-electric-blue">الامتثال:</strong> الوفاء بالالتزامات القانونية والتنظيمية</li>
+                                    <li>• <strong class="text-electric-blue">التخصيص:</strong> تقديم محتوى مخصص وذي صلة</li>
+                                    <li>• <strong class="text-electric-blue">التحليل:</strong> فهم استخدام الخدمة وتحسين الأداء</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Section 3 -->
+                    <section id="section-3" class="content-section">
+                        <div class="section-card p-6 md:p-8 rounded-2xl">
+                            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-accent-yellow">3. مشاركة المعلومات</h2>
+                            <div class="space-y-4 text-gray-300">
+                                <p>نحن لا نبيع أو نؤجر معلوماتك الشخصية. قد نشارك معلوماتك في الحالات التالية فقط:</p>
+                                <ul class="space-y-3 mr-6">
+                                    <li>• <strong class="text-electric-blue">مقدمو الخدمات:</strong> الشركات التي تساعدنا في تشغيل خدماتنا</li>
+                                    <li>• <strong class="text-electric-blue">الامتثال القانوني:</strong> عند الطلب من السلطات المختصة</li>
+                                    <li>• <strong class="text-electric-blue">حماية الحقوق:</strong> لحماية حقوقنا وحقوق المستخدمين الآخرين</li>
+                                    <li>• <strong class="text-electric-blue">عمليات الدمج:</strong> في حالة بيع أو دمج الشركة</li>
+                                    <li>• <strong class="text-electric-blue">الموافقة:</strong> عندما تمنح موافقتك الصريحة</li>
+                                </ul>
+                                <div class="bg-cyber-purple/20 p-4 rounded-lg mt-6">
+                                    <p class="text-cyber-purple font-semibold">ملاحظة مهمة:</p>
+                                    <p>جميع الشركاء والمقدمين ملزمون بحماية معلوماتك وفقاً لمعايير الأمان العالية.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Section 4 -->
+                    <section id="section-4" class="content-section">
+                        <div class="section-card p-6 md:p-8 rounded-2xl">
+                            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-accent-yellow">4. أمان البيانات</h2>
+                            <div class="space-y-4 text-gray-300">
+                                <p>نتخذ إجراءات أمنية صارمة لحماية معلوماتك:</p>
+                                <div class="grid md:grid-cols-2 gap-6 mt-6">
+                                    <div>
+                                        <h3 class="text-xl font-semibold mb-3 text-electric-blue">التشفير</h3>
+                                        <ul class="space-y-2 mr-6">
+                                            <li>• تشفير البيانات أثناء النقل والتخزين</li>
+                                            <li>• بروتوكولات SSL/TLS متقدمة</li>
+                                            <li>• تشفير قواعد البيانات</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-semibold mb-3 text-electric-blue">التحكم في الوصول</h3>
+                                        <ul class="space-y-2 mr-6">
+                                            <li>• مصادقة ثنائية العامل</li>
+                                            <li>• صلاحيات محدودة للموظفين</li>
+                                            <li>• مراقبة مستمرة للأنشطة</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-semibold mb-3 text-electric-blue">البنية التحتية</h3>
+                                        <ul class="space-y-2 mr-6">
+                                            <li>• خوادم آمنة ومحمية</li>
+                                            <li>• نسخ احتياطية منتظمة</li>
+                                            <li>• مراكز بيانات معتمدة</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-semibold mb-3 text-electric-blue">المراقبة والاستجابة</h3>
+                                        <ul class="space-y-2 mr-6">
+                                            <li>• كشف التهديدات المتقدم</li>
+                                            <li>• خطط الاستجابة للحوادث</li>
+                                            <li>• تحديثات أمنية مستمرة</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Section 5 -->
+                    <section id="section-5" class="content-section">
+                        <div class="section-card p-6 md:p-8 rounded-2xl">
+                            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-accent-yellow">5. ملفات تعريف الارتباط (Cookies)</h2>
+                            <div class="space-y-4 text-gray-300">
+                                <p>نستخدم ملفات تعريف الارتباط لتحسين تجربتك:</p>
+                                <div class="space-y-4">
+                                    <div>
+                                        <h3 class="text-xl font-semibold mb-3 text-electric-blue">الملفات الأساسية</h3>
+                                        <p>ضرورية لتشغيل الموقع وتوفير الخدمات الأساسية.</p>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-semibold mb-3 text-electric-blue">ملفات التحليل</h3>
+                                        <p>تساعدنا في فهم كيفية استخدام الموقع وتحسين الأداء.</p>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-semibold mb-3 text-electric-blue">ملفات التخصيص</h3>
+                                        <p>تحفظ تفضيلاتك وتوفر تجربة مخصصة.</p>
+                                    </div>
+                                </div>
+                                <div class="bg-accent-yellow/20 p-4 rounded-lg mt-6">
+                                    <p class="text-accent-yellow font-semibold">إدارة ملفات تعريف الارتباط:</p>
+                                    <p>يمكنك التحكم في ملفات تعريف الارتباط من خلال إعدادات متصفحك.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Section 6 -->
+                    <section id="section-6" class="content-section">
+                        <div class="section-card p-6 md:p-8 rounded-2xl">
+                            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-accent-yellow">6. حقوقك</h2>
+                            <div class="space-y-4 text-gray-300">
+                                <p>لديك الحقوق التالية فيما يتعلق ببياناتك الشخصية:</p>
+                                <div class="grid md:grid-cols-2 gap-6 mt-6">
+                                    <div class="space-y-4">
+                                        <div>
+                                            <h3 class="text-lg font-semibold text-electric-blue">الوصول</h3>
+                                            <p>طلب نسخة من بياناتك الشخصية المخزنة لدينا.</p>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-lg font-semibold text-electric-blue">التصحيح</h3>
+                                            <p>تحديث أو تصحيح معلوماتك غير الدقيقة.</p>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-lg font-semibold text-electric-blue">الحذف</h3>
+                                            <p>طلب حذف بياناتك الشخصية في ظروف معينة.</p>
+                                        </div>
+                                    </div>
+                                    <div class="space-y-4">
+                                        <div>
+                                            <h3 class="text-lg font-semibold text-electric-blue">التقييد</h3>
+                                            <p>تقييد معالجة بياناتك الشخصية.</p>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-lg font-semibold text-electric-blue">النقل</h3>
+                                            <p>نقل بياناتك إلى مقدم خدمة آخر.</p>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-lg font-semibold text-electric-blue">الاعتراض</h3>
+                                            <p>الاعتراض على معالجة بياناتك لأغراض معينة.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-neon-green/20 p-4 rounded-lg mt-6">
+                                    <p class="text-neon-green font-semibold">كيفية ممارسة حقوقك:</p>
+                                    <p>يمكنك ممارسة هذه الحقوق من خلال لوحة التحكم في حسابك أو عبر نموذج الطلبات المخصص.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Section 7 -->
+                    <section id="section-7" class="content-section">
+                        <div class="section-card p-6 md:p-8 rounded-2xl">
+                            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-accent-yellow">7. الخدمات الخارجية</h2>
+                            <div class="space-y-4 text-gray-300">
+                                <p>نتعامل مع مقدمي خدمات خارجيين موثوقين:</p>
+                                <ul class="space-y-3 mr-6">
+                                    <li>• <strong class="text-electric-blue">معالجة المدفوعات:</strong> بوابات دفع آمنة ومعتمدة</li>
+                                    <li>• <strong class="text-electric-blue">تحليلات الويب:</strong> أدوات تحليل حركة المرور والاستخدام</li>
+                                    <li>• <strong class="text-electric-blue">خدمات البريد الإلكتروني:</strong> منصات إرسال الرسائل الإلكترونية</li>
+                                    <li>• <strong class="text-electric-blue">التخزين السحابي:</strong> خدمات تخزين البيانات الآمنة</li>
+                                    <li>• <strong class="text-electric-blue">خدمات الأمان:</strong> أدوات الحماية والمراقبة</li>
+                                </ul>
+                                <div class="bg-cyber-purple/20 p-4 rounded-lg mt-6">
+                                    <p class="text-cyber-purple font-semibold">ضمان الجودة:</p>
+                                    <p>جميع مقدمي الخدمات الخارجيين يلتزمون بمعايير الخصوصية والأمان المطلوبة.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Section 8 -->
+                    <section id="section-8" class="content-section">
+                        <div class="section-card p-6 md:p-8 rounded-2xl">
+                            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-accent-yellow">8. الاحتفاظ بالبيانات</h2>
+                            <div class="space-y-4 text-gray-300">
+                                <p>نحتفظ ببياناتك للفترات التالية:</p>
+                                <div class="space-y-4">
+                                    <div>
+                                        <h3 class="text-xl font-semibold mb-3 text-electric-blue">بيانات الحساب النشط</h3>
+                                        <p>طوال فترة نشاط حسابك وتلقي خدماتنا.</p>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-semibold mb-3 text-electric-blue">البيانات المالية</h3>
+                                        <p>لمدة 7 سنوات وفقاً للمتطلبات التنظيمية والمحاسبية.</p>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-semibold mb-3 text-electric-blue">سجلات التواصل</h3>
+                                        <p>لمدة 3 سنوات لأغراض خدمة العملاء وحل النزاعات.</p>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-xl font-semibold mb-3 text-electric-blue">البيانات التحليلية</h3>
+                                        <p>بشكل مجهول لمدة 2-5 سنوات لأغراض التحسين والبحث.</p>
+                                    </div>
+                                </div>
+                                <div class="bg-accent-yellow/20 p-4 rounded-lg mt-6">
+                                    <p class="text-accent-yellow font-semibold">الحذف التلقائي:</p>
+                                    <p>يتم حذف البيانات تلقائياً عند انتهاء فترة الاحتفاظ المطلوبة.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Section 9 -->
+                    <section id="section-9" class="content-section">
+                        <div class="section-card p-6 md:p-8 rounded-2xl">
+                            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-accent-yellow">9. حماية الأطفال</h2>
+                            <div class="space-y-4 text-gray-300">
+                                <p>نحن ملتزمون بحماية خصوصية الأطفال:</p>
+                                <ul class="space-y-3 mr-6">
+                                    <li>• خدماتنا مخصصة للبالغين من عمر 18 سنة فما فوق</li>
+                                    <li>• لا نجمع عمداً معلومات من الأطفال دون سن 18</li>
+                                    <li>• إذا علمنا بجمع بيانات طفل، سنحذفها فوراً</li>
+                                    <li>• نشجع الآباء على مراقبة أنشطة أطفالهم على الإنترنت</li>
+                                </ul>
+                                <div class="bg-red-500/20 p-4 rounded-lg mt-6">
+                                    <p class="text-red-400 font-semibold">تنبيه مهم:</p>
+                                    <p>إذا كنت تعتقد أن طفلاً قد قدم معلومات شخصية لنا، يرجى إبلاغنا فوراً لاتخاذ الإجراءات المناسبة.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Section 10 -->
+                    <section id="section-10" class="content-section">
+                        <div class="section-card p-6 md:p-8 rounded-2xl">
+                            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-accent-yellow">10. التغييرات على السياسة</h2>
+                            <div class="space-y-4 text-gray-300">
+                                <p>قد نقوم بتحديث سياسة الخصوصية هذه من وقت لآخر:</p>
+                                <ul class="space-y-3 mr-6">
+                                    <li>• سنخطرك بأي تغييرات مهمة قبل 30 يوماً من تطبيقها</li>
+                                    <li>• سيتم نشر النسخة المحدثة على موقعنا</li>
+                                    <li>• استمرار استخدام خدماتنا يعني موافقتك على التغييرات</li>
+                                    <li>• يمكنك مراجعة تاريخ آخر تحديث في أعلى هذه الصفحة</li>
+                                </ul>
+                                
+                                <div class="mt-8 space-y-4">
+                                    <h3 class="text-xl font-semibold text-electric-blue">أسباب التحديث</h3>
+                                    <ul class="space-y-2 mr-6">
+                                        <li>• تغييرات في القوانين والتنظيمات</li>
+                                        <li>• إضافة خدمات أو ميزات جديدة</li>
+                                        <li>• تحسينات في ممارسات الأمان</li>
+                                        <li>• توضيحات أو تحسينات في الصياغة</li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-electric-blue/20 p-4 rounded-lg mt-6">
+                                    <p class="text-electric-blue font-semibold">البقاء على اطلاع:</p>
+                                    <p>ننصحك بمراجعة سياسة الخصوصية بانتظام للبقاء على اطلاع بأحدث التطورات.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Final Note -->
+                    <section class="content-section">
+                        <div class="elite-card p-6 md:p-8 rounded-2xl text-center">
+                            <h3 class="text-2xl font-bold mb-4 text-accent-yellow">التزامنا بالخصوصية</h3>
+                            <p class="text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto">
+                                نحن نأخذ خصوصيتك على محمل الجد ونلتزم بأعلى معايير حماية البيانات. 
+                                هدفنا هو بناء الثقة معك من خلال الشفافية والأمان في جميع ممارساتنا.
+                            </p>
+                            <div class="mt-6">
+                                <button onclick="window.history.back()" class="bg-accent-yellow text-deep-blue px-8 py-3 rounded-full font-bold hover:scale-105 transition-all duration-300">
+                                    العودة للصفحة الرئيسية
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-deep-blue/95 backdrop-blur-lg border-t border-gray-700/50 py-8 md:py-12 px-4 relative">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="mb-6">
+                <h3 class="text-2xl font-black text-accent-yellow neon-text mb-3">إشارات الأسهم النخبة</h3>
+                <p class="text-gray-300 max-w-2xl mx-auto">
+                    شريكك الموثوق للتحليل المهني للأسهم وإشارات التداول في مجتمع الاستثمار النخبة.
+                </p>
+            </div>
+            
+            <div class="border-t border-gray-700/50 pt-6 text-gray-400 text-sm">
+                <p>&copy; 2025 إشارات الأسهم النخبة. جميع الحقوق محفوظة.</p>
+                <p class="mt-2">
+                    <a href="#" class="text-accent-yellow hover:underline">سياسة الخصوصية</a> | 
+                    <a href="#" class="text-accent-yellow hover:underline">شروط الخدمة</a> | 
+                    <a href="#" class="text-accent-yellow hover:underline">الكشف عن المخاطر</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
