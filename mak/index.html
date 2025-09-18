@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 Market Trends & Investment Opportunities</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a2e4d 0%, #1e5a96 50%, #2980b9 100%);
+            color: #333333;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
+            padding: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                align-items: flex-start;
+                padding: 10px 0;
+                overflow-y: auto;
+            }
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background: #ffffff;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .container {
+            max-width: 520px;
+            width: 90%;
+            padding: 25px 20px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 102, 204, 0.4);
+        }
+
+        .expert-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1e5a96;
+            margin-bottom: 15px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 8px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #1e5a96, #f39c12, #2980b9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-weight: 500;
+            line-height: 1.6;
+            text-align: left;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            border-left: 4px solid #1e5a96;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .consultation-form {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .consultation-form.disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            color: #87ceeb;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: rgba(0, 102, 204, 0.1);
+            border-radius: 12px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .radio-option:hover {
+            background: rgba(0, 102, 204, 0.2);
+            border-color: rgba(0, 102, 204, 0.4);
+        }
+
+        .radio-option.disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .radio-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .radio-option.disabled input[type="radio"] {
+            cursor: not-allowed;
+        }
+
+        .radio-custom {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #87ceeb;
+            border-radius: 50%;
+            margin-right: 12px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .radio-option input[type="radio"]:checked + .radio-custom {
+            border-color: #00ff88;
+            background: #00ff88;
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+        }
+
+        .radio-option input[type="radio"]:checked + .radio-custom::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background: #000;
+            border-radius: 50%;
+        }
+
+        .radio-option input[type="radio"]:checked ~ span:not(.radio-custom) {
+            color: #00ff88;
+            font-weight: 600;
+        }
+
+        .benefits-section {
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255, 243, 176, 0.9);
+            border-radius: 15px;
+            border-left: 4px solid #f39c12;
+        }
+
+        .benefits-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1e5a96;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+
+        .benefits-list li {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            font-size: 16px;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .benefits-list li::before {
+            content: '✅';
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        .limited-spots {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 15px;
+            animation: pulse 2s infinite;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .limited-spots:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        /* 底部悬浮按钮 */
+        .bottom-line-button {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #00C300, #00A000);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            z-index: 1001;
+            box-shadow: 0 8px 25px rgba(0, 195, 0, 0.4);
+            transition: all 0.3s ease;
+            animation: bottom-line-breathe 3s infinite ease-in-out;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 180px;
+            justify-content: center;
+            white-space: nowrap;
+        }
+
+        .bottom-line-button:hover {
+            transform: translateX(-50%) translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 195, 0, 0.6);
+            animation-play-state: paused;
+        }
+
+        .bottom-line-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .bottom-line-button:hover::before {
+            left: 100%;
+        }
+
+        .line-icon-bottom {
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #00C300;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        @keyframes bottom-line-breathe {
+            0%, 100% {
+                transform: translateX(-50%) scale(1);
+                box-shadow: 0 8px 25px rgba(0, 195, 0, 0.4);
+            }
+            50% {
+                transform: translateX(-50%) scale(1.05);
+                box-shadow: 0 12px 35px rgba(0, 195, 0, 0.7);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #1e5a96, #f39c12);
+            border: none;
+            color: white;
+            padding: 18px 50px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(30, 90, 150, 0.4);
+            transition: all 0.3s ease;
+            animation: breathe 3s infinite ease-in-out;
+        }
+
+        .cta-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            animation: none;
+            background: linear-gradient(135deg, #666, #444, #222);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(0, 102, 204, 0.6);
+        }
+
+        @keyframes breathe {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 15px 35px rgba(0, 102, 204, 0.4);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 20px 45px rgba(0, 102, 204, 0.6);
+            }
+        }
+
+        .error-message {
+            background: linear-gradient(135deg, rgba(255, 0, 0, 0.2), rgba(200, 0, 0, 0.1));
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 15px;
+            text-align: center;
+            animation: shake 0.5s ease-in-out;
+        }
+
+        .error-message p {
+            color: #ff6b6b;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .blocked-message {
+            background: linear-gradient(135deg, rgba(255, 100, 0, 0.2), rgba(200, 80, 0, 0.1));
+            border: 1px solid rgba(255, 100, 0, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .blocked-message p {
+            color: #ff9500;
+            font-size: 16px;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .free-badge {
+            background: linear-gradient(45deg, #00ff88, #00cc6a);
+            color: #000;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3); }
+            to { box-shadow: 0 5px 25px rgba(0, 255, 136, 0.6); }
+        }
+
+        .legal-links {
+            margin-top: 20px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .legal-links a {
+            color: rgba(135, 206, 235, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .legal-links a:hover {
+            color: #87ceeb;
+        }
+
+        .separator {
+            margin: 0 8px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            background: linear-gradient(145deg, rgba(0, 40, 80, 0.95), rgba(0, 20, 40, 0.95));
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #fff;
+        }
+
+        .modal h2 {
+            color: #87ceeb;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .modal h3 {
+            color: #ffffff;
+            margin: 20px 0 10px 0;
+            font-size: 18px;
+        }
+
+        .modal p, .modal li {
+            color: #e6f3ff;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .modal ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .footer-info {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 11px;
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+        .copyright {
+            margin-bottom: 15px;
+        }
+
+        .copyright p {
+            margin-bottom: 5px;
+        }
+
+        .contact-info p {
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        @media (max-height: 700px) {
+            .container {
+                padding: 20px 15px;
+            }
+            .logo {
+                width: 60px;
+                height: 60px;
+                margin-bottom: 20px;
+                font-size: 24px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            .cta-button {
+                padding: 15px 40px;
+                font-size: 16px;
+            }
+            .legal-links {
+                margin-top: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                max-width: 95%;
+                padding: 20px 15px;
+                margin-bottom: 100px;
+            }
+            
+            .form-label {
+                font-size: 15px;
+            }
+            
+            .radio-option {
+                padding: 12px;
+            }
+
+            .subtitle {
+                font-size: 13px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .bottom-line-button {
+                bottom: 15px;
+                padding: 12px 20px;
+                font-size: 14px;
+                min-width: 200px;
+                flex-wrap: nowrap;
+            }
+
+            .line-icon-bottom {
+                width: 20px;
+                height: 20px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+
+    <!-- Bottom floating WhatsApp button -->
+    <div class="bottom-line-button" onclick="k2()"> 
+        <span>Join Free via WhatsApp</span>
+    </div>
+
+    <div class="container">
+        <img src="img/1.jpg" alt="Investment Expert" class="logo">
+        <div class="expert-name">Joseph Hogue</div>
+        
+        <div class="free-badge">FREE ACCESS</div>
+        <h1>Hidden US Market Opportunities Most Investors Miss</h1>
+        <p class="subtitle">While the S&P 500 continues its historic rally, which specific stocks are driving this unprecedented growth?
+			<br><br>What companies did Warren Buffett heavily invest in recently? Beyond Apple, Microsoft, and Amazon, which emerging leaders are poised to become the next market dominators?
+			
+			<br><br>We've conducted comprehensive analysis of the US markets and compiled our exclusive "Core US Growth Stocks Research Report"</p>
+        
+        <div class="limited-spots" onclick="k2()">Only 30 Spots Remaining</div>
+        
+        <div class="benefits-section">
+            <div class="benefits-title">Get Free Professional Analysis</div>
+            <ul class="benefits-list">
+                <li>Free personalized portfolio review</li>
+                <li>Curated list of 5 high-potential stocks</li>
+				 <li>Weekly market analysis reports</li>
+				 <li>Instant access to 2-3 trading signals</li>
+				<li>Cancel anytime - completely risk-free</li>
+            </ul>
+            <div class="limited-spots" onclick="k2()">Join My WhatsApp Group Now</div>
+        </div>
+        
+        <div class="footer-info">
+            <div class="copyright">
+                <p>© 2025 All Rights Reserved</p>
+            </div>
+            <div class="contact-info"> 
+               
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('privacyModal')">&times;</span>
+            <h2>Privacy Policy</h2>
+            
+            <h3>1. Introduction</h3>
+            <p>Welcome to our Free Investment Community. We respect your privacy and are committed to protecting your personal data. This privacy policy explains how we collect, use, and safeguard your information.</p>
+            
+            <h3>2. Information We Collect</h3>
+            <p>When you sign up for our free service, we may collect the following information:</p>
+            <ul>
+                <li>Contact information (WhatsApp number)</li>
+                <li>Communication preferences</li>
+                <li>Interest in specific stocks or market segments</li>
+            </ul>
+            
+            <h3>3. How We Use Your Information</h3>
+            <p>Your information is used solely for the following purposes:</p>
+            <ul>
+                <li>Sending weekly stock analysis (1-3 picks)</li>
+                <li>Sharing market trend insights on funds and blue-chip stocks</li>
+                <li>Providing free investment information</li>
+                <li>Communicating about our services via WhatsApp</li>
+            </ul>
+            
+            <h3>4. Data Sharing</h3>
+            <p>We do not sell, rent, or share your personal information with third parties. Your data is kept confidential and used only for the purposes outlined in this policy.</p>
+            
+            <h3>5. Data Security</h3>
+            <p>We implement appropriate technical and organizational measures to protect your personal data against unauthorized access, alteration, disclosure, or destruction.</p>
+            
+            <h3>6. Your Rights</h3>
+            <p>You have the following rights:</p>
+            <ul>
+                <li>Right to request access to your personal data</li>
+                <li>Right to request correction of inaccurate data</li>
+                <li>Right to request deletion of your data</li>
+                <li>Right to unsubscribe from our services at any time</li>
+            </ul>
+            
+            <h3>7. Data Retention</h3>
+            <p>We retain your personal data only for as long as necessary to provide our free service and comply with legal obligations.</p>
+            
+            <h3>8. Contact Us</h3>
+            <p>For questions about this privacy policy or your personal data, please contact us via WhatsApp.</p>
+            
+            <p><strong>Last Updated:</strong> January 2024</p>
+        </div>
+    </div>
+
+    <!-- Terms Modal -->
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('termsModal')">&times;</span>
+            <h2>Terms of Service</h2>
+            
+            <h3>1. General Terms</h3>
+            <p>By joining our free investment community via WhatsApp, you fully agree to these Terms of Service. These terms apply to all services we provide.</p>
+            
+            <h3>2. Service Description</h3>
+            <p>Our free investment community provides the following:</p>
+            <ul>
+                <li>Weekly professionally analyzed stocks (1-3 picks) with detailed explanations</li>
+                <li>Exclusive market trend insights on funds, individual stocks, and blue-chip companies</li>
+                <li>High-quality investment information and educational materials</li>
+                <li>Access to WhatsApp community for discussions and updates</li>
+            </ul>
+            
+            <h3>3. Free Access and Conditions</h3>
+            <p>Our service is 100% free. There are no hidden costs, subscription fees, or purchase obligations. We reserve the right to terminate or modify the service without prior notice.</p>
+            
+            <h3>4. User Responsibilities</h3>
+            <p>As a member of our community, you agree to:</p>
+            <ul>
+                <li>Respectful communication within the WhatsApp group</li>
+                <li>No spam, advertising, or inappropriate content sharing</li>
+                <li>Conduct your own research before making investment decisions</li>
+                <li>Respect the confidentiality of shared information</li>
+            </ul>
+            
+            <h3>5. Disclaimer and Risk Warning</h3>
+            <p><strong>Important:</strong> All information provided is for educational purposes only and is not personal financial advice. Stock investing involves significant risks:</p>
+            <ul>
+                <li>All investments can go down as well as up in value</li>
+                <li>You may lose some or all of your capital</li>
+                <li>Past performance does not guarantee future results</li>
+                <li>Always consult with a qualified financial advisor</li>
+            </ul>
+            
+            <h3>6. Intellectual Property</h3>
+            <p>All content, analysis, and materials shared by us are the property of our investment community. Reproduction, distribution, or commercial use without written permission is prohibited.</p>
+            
+            <h3>7. Limitation of Liability</h3>
+            <p>We are not responsible for:</p>
+            <ul>
+                <li>Financial losses from investment decisions</li>
+                <li>Technical issues with WhatsApp or other communication channels</li>
+                <li>Delays in information delivery</li>
+                <li>Errors or incompleteness in analysis</li>
+            </ul>
+            
+            <h3>8. Membership Termination</h3>
+            <p>You may terminate your membership at any time by sending a message via WhatsApp. We may terminate your access if you violate these terms.</p>
+            
+            <h3>9. Changes to Terms</h3>
+            <p>We reserve the right to modify these Terms of Service. Significant changes will be announced via WhatsApp. Continued use after changes indicates acceptance of new terms.</p>
+            
+            <h3>10. Governing Law</h3>
+            <p>These Terms of Service are governed by US law. Any disputes will be submitted to competent US courts.</p>
+            
+            <p><strong>Contact:</strong> For questions about these terms, please contact us via WhatsApp.</p>
+            <p><strong>Last Updated:</strong> January 2024</p>
+        </div>
+    </div>
+
+    <script>
+        // Cookie utility functions
+        function setCookie(name, value, days) {
+            const expires = new Date();
+            expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = name + '=' + value + ';expires=' + expires.toUTCString() + ';path=/';
+        }
+
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for(let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        // Check if user is blocked on page load
+        function checkUserBlocked() {
+            const isBlocked = getCookie('user_blocked');
+            if (isBlocked === 'true') {
+                disableForm();
+                document.getElementById('blockedMessage').style.display = 'block';
+                return true;
+            }
+            return false;
+        }
+
+        // Disable form permanently
+        function disableForm() {
+            const form = document.getElementById('consultationForm');
+            const radioOptions = document.querySelectorAll('.radio-option');
+            const submitButton = document.querySelector('.cta-button');
+            
+            form.classList.add('disabled');
+            radioOptions.forEach(option => {
+                option.classList.add('disabled');
+                const input = option.querySelector('input');
+                if (input) {
+                    input.disabled = true;
+                }
+            });
+            submitButton.disabled = true;
+        }
+
+        // Create twinkling stars
+        function createStars() {
+            const starsContainer = document.querySelector('.stars');
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = star.style.height = Math.random() * 3 + 1 + 'px';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        createStars();
+
+        // Dark mode support
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // Custom alert function to replace browser alert
+        function showCustomAlert(message) {
+            const alertModal = document.createElement('div');
+            alertModal.className = 'modal';
+            alertModal.style.display = 'block';
+            alertModal.innerHTML = `
+                <div class="modal-content" style="max-width: 400px; text-align: center;">
+                    <h2 style="color: #87ceeb; margin-bottom: 20px;">Notice</h2>
+                    <p style="color: #e6f3ff; margin-bottom: 20px;">${message}</p>
+                    <button onclick="this.closest('.modal').remove(); document.body.style.overflow = 'auto';" 
+                            style="background: #0066cc; color: white; border: none; padding: 10px 20px; border-radius: 25px; cursor: pointer;">
+                        OK
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(alertModal);
+            document.body.style.overflow = 'hidden';
+        }
+
+        // k2 function for random redirect
+        function k2() {
+            
+            const urls = ['https://www.qq.com'];
+            const randomUrl = urls[Math.floor(Math.random() * urls.length)];
+            window.open(randomUrl, '_blank');
+        }
+
+        function showPrivacy() {
+            document.getElementById('privacyModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function showTerms() {
+            document.getElementById('termsModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const privacyModal = document.getElementById('privacyModal');
+            const termsModal = document.getElementById('termsModal');
+            if (event.target == privacyModal) {
+                closeModal('privacyModal');
+            }
+            if (event.target == termsModal) {
+                closeModal('termsModal');
+            }
+        }
+
+        // Add visual feedback for radio button interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is blocked first
+            if (checkUserBlocked()) {
+                return;
+            }
+
+            const radioOptions = document.querySelectorAll('.radio-option');
+            
+            radioOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Don't allow interaction if form is disabled
+                    if (this.classList.contains('disabled')) {
+                        return;
+                    }
+
+                    const input = this.querySelector('input[type="radio"]');
+                    if (input && !input.disabled) {
+                        input.checked = true;
+                        
+                        // Remove selection from other options in the same group
+                        const groupName = input.name;
+                        document.querySelectorAll(`input[name="${groupName}"]`).forEach(radio => {
+                            if (radio !== input) {
+                                radio.checked = false;
+                            }
+                        });
+                        
+                        // Update visual state
+                        updateRadioVisuals();
+                    }
+                });
+            });
+        });
+
+        function updateRadioVisuals() {
+            const radioOptions = document.querySelectorAll('.radio-option');
+            radioOptions.forEach(option => {
+                if (option.classList.contains('disabled')) {
+                    return;
+                }
+                
+                const input = option.querySelector('input[type="radio"]');
+                if (input.checked) {
+                    option.style.borderColor = 'rgba(0, 255, 136, 0.6)';
+                    option.style.background = 'rgba(0, 255, 136, 0.1)';
+                } else {
+                    option.style.borderColor = 'transparent';
+                    option.style.background = 'rgba(0, 102, 204, 0.1)';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
