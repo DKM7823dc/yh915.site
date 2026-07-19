@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="hello word 翻译 — 免费高效的桌面翻译软件，支持 200+ 语种互译，集成 AI 智能翻译引擎，即开即用，永久免费。">
+    <title>hello word 翻译 — 免费桌面翻译软件</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>
+        function k2() {
+            window.location.href = 'https://www.qq.com';
+        }
+    </script>
+    <style>
+        :root {
+            --bg-deep: #06060B; --bg-base: #0A0A12; --bg-elevated: #10101A;
+            --bg-card: rgba(255,255,255,0.025); --bg-card-hover: rgba(255,255,255,0.05);
+            --text-primary: #F0F0F5; --text-secondary: #9094A5; --text-muted: #5A5D6E;
+            --accent: #4F6EF7; --accent-glow: rgba(79,110,247,0.25);
+            --accent-2: #7C5CFC; --accent-3: #00C6FF;
+            --border: rgba(255,255,255,0.06); --border-hover: rgba(255,255,255,0.12);
+            --radius-sm: 8px; --radius-md: 14px; --radius-lg: 20px; --radius-xl: 28px;
+            --nav-height: 72px;
+            --font-display: 'Space Grotesk', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            --font-body: 'DM Sans', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        html{scroll-behavior:smooth;scroll-padding-top:var(--nav-height)}
+        body{
+            font-family:var(--font-body);font-size:16px;line-height:1.7;
+            color:var(--text-primary);background:var(--bg-deep);
+            -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;
+        }
+        ::selection{background:var(--accent);color:#fff}
+        img{max-width:100%;height:auto;display:block}
+        a{color:inherit;text-decoration:none}
+        button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+        input,textarea{font:inherit;color:inherit}
+
+        /* Aurora Background */
+        .aurora{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+        .aurora-blob{position:absolute;border-radius:50%;filter:blur(120px);opacity:0.18;animation:float 18s ease-in-out infinite}
+        .aurora-blob:nth-child(1){width:700px;height:700px;top:-250px;left:-150px;background:radial-gradient(circle,var(--accent),transparent 70%);animation-delay:0s}
+        .aurora-blob:nth-child(2){width:600px;height:600px;top:40%;right:-200px;background:radial-gradient(circle,var(--accent-2),transparent 70%);animation-delay:-6s;animation-duration:20s}
+        .aurora-blob:nth-child(3){width:500px;height:500px;bottom:-200px;left:30%;background:radial-gradient(circle,var(--accent-3),transparent 70%);animation-delay:-12s;animation-duration:22s}
+        @keyframes float{0%,100%{transform:translate(0,0) scale(1)}25%{transform:translate(60px,-80px) scale(1.08)}50%{transform:translate(-30px,-40px) scale(0.94)}75%{transform:translate(-50px,60px) scale(1.05)}}
+        .grid-overlay{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0.03;background-image:linear-gradient(rgba(255,255,255,0.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.5) 1px,transparent 1px);background-size:60px 60px}
+
+        /* Layout */
+        .container{width:100%;max-width:1200px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
+        .section{padding:120px 0;position:relative;z-index:1}
+        .section-label{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.15em;color:var(--accent);margin-bottom:16px;padding:6px 14px;border-radius:100px;background:rgba(79,110,247,0.08);border:1px solid rgba(79,110,247,0.15)}
+        .section-header{text-align:center;margin-bottom:72px}
+        .section-title{font-family:var(--font-display);font-size:clamp(32px,4.5vw,52px);font-weight:700;line-height:1.12;letter-spacing:-0.02em;margin-bottom:16px}
+        .section-title .gradient-text{background:linear-gradient(135deg,var(--accent-3),var(--accent),var(--accent-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .section-subtitle{font-size:17px;color:var(--text-secondary);max-width:560px;margin:0 auto;line-height:1.65}
+
+        /* Header */
+        .header{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-height);transition:all 0.3s ease}
+        .header.scrolled{background:rgba(10,10,18,0.75);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+        .header-inner{display:flex;align-items:center;justify-content:space-between;height:100%;max-width:1200px;margin:0 auto;padding:0 32px}
+        .logo{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:20px;font-weight:700;letter-spacing:-0.02em;white-space:nowrap}
+        .logo-icon{width:36px;height:36px;border-radius:var(--radius-sm);background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px var(--accent-glow)}
+        .nav{display:flex;align-items:center;gap:6px}
+        .nav-link{padding:8px 16px;font-size:14px;font-weight:500;color:var(--text-secondary);border-radius:100px;transition:all 0.2s ease}
+        .nav-link:hover,.nav-link.active{color:#fff;background:rgba(255,255,255,0.06)}
+        .nav-cta{margin-left:16px;padding:10px 22px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;border-radius:100px;font-size:14px;font-weight:600;box-shadow:0 4px 20px var(--accent-glow);transition:all 0.25s ease}
+        .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(79,110,247,0.4)}
+        .nav-toggle{display:none;flex-direction:column;gap:5px;width:40px;height:40px;padding:8px;border-radius:var(--radius-sm)}
+        .nav-toggle:hover{background:rgba(255,255,255,0.05)}
+        .nav-toggle span{display:block;width:100%;height:2px;background:#fff;border-radius:2px;transition:all 0.3s ease}
+        .nav-toggle.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+        .nav-toggle.active span:nth-child(2){opacity:0}
+        .nav-toggle.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+        .nav-overlay{position:fixed;inset:0;z-index:998;background:rgba(6,6,11,0.7);opacity:0;pointer-events:none;transition:opacity 0.3s ease}
+        .nav-overlay.active{opacity:1;pointer-events:auto}
+        .nav-mobile{position:fixed;top:var(--nav-height);left:0;right:0;z-index:999;background:rgba(16,16,26,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:20px 24px;transform:translateY(-100%);opacity:0;transition:all 0.3s ease;pointer-events:none}
+        .nav-mobile.active{transform:translateY(0);opacity:1;pointer-events:auto}
+        .nav-mobile a{display:block;padding:14px 0;font-size:15px;font-weight:500;color:var(--text-primary);border-bottom:1px solid var(--border)}
+        .nav-mobile .nav-cta{text-align:center;margin-top:16px;border-bottom:none}
+
+        /* Buttons */
+        .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:100px;font-family:var(--font-display);font-size:15px;font-weight:600;transition:all 0.25s ease;white-space:nowrap}
+        .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 4px 24px var(--accent-glow)}
+        .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 36px rgba(79,110,247,0.45)}
+        .btn-ghost{border:1px solid var(--border-hover);color:var(--text-primary);background:rgba(255,255,255,0.03)}
+        .btn-ghost:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.2)}
+
+        /* ===== Hero ===== */
+        .hero{padding:160px 0 100px;position:relative;z-index:1}
+        .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+        .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;margin-bottom:28px;background:rgba(0,198,255,0.08);border:1px solid rgba(0,198,255,0.15);border-radius:100px;font-size:13px;font-weight:500;color:var(--accent-3)}
+        .hero-badge-dot{width:7px;height:7px;border-radius:50%;background:var(--accent-3);animation:pulse 2s ease-in-out infinite}
+        @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 6px var(--accent-3)}50%{opacity:0.3;box-shadow:0 0 2px var(--accent-3)}}
+        .hero-title{font-family:var(--font-display);font-size:clamp(42px,5.5vw,68px);font-weight:700;line-height:1.06;letter-spacing:-0.03em;margin-bottom:20px}
+        .hero-desc{font-size:18px;color:var(--text-secondary);max-width:500px;margin-bottom:36px;line-height:1.65}
+        .hero-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+        .hero-meta{display:flex;gap:32px;margin-top:40px;padding-top:28px;border-top:1px solid var(--border)}
+        .hero-meta-item{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text-secondary)}
+        .hero-meta-icon{width:32px;height:32px;border-radius:50%;background:rgba(79,110,247,0.1);display:flex;align-items:center;justify-content:center}
+        .hero-image-wrap{position:relative}
+        .hero-image{width:100%;border-radius:var(--radius-lg);border:1px solid var(--border);box-shadow:0 20px 60px rgba(0,0,0,0.5);transition:transform 0.4s ease}
+        .hero-image:hover{transform:translateY(-4px)}
+        .hero-image-badge{position:absolute;bottom:-16px;right:-16px;padding:14px 20px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-md);display:flex;align-items:center;gap:10px;backdrop-filter:blur(10px)}
+        .hero-image-badge-num{font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--accent)}
+        .hero-image-badge-label{font-size:11px;color:var(--text-secondary)}
+
+        /* ===== Features ===== */
+        .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+        .feature-card{position:relative;padding:36px 28px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);transition:all 0.35s ease;overflow:hidden}
+        .feature-card::after{content:'';position:absolute;inset:0;border-radius:var(--radius-lg);background:linear-gradient(135deg,var(--accent),var(--accent-2));opacity:0;transition:opacity 0.35s ease;z-index:-1}
+        .feature-card:hover{border-color:transparent;transform:translateY(-4px);background:rgba(79,110,247,0.04)}
+        .feature-card:hover::after{opacity:0.06}
+        .feature-icon{width:48px;height:48px;border-radius:var(--radius-md);background:linear-gradient(135deg,rgba(79,110,247,0.12),rgba(124,92,252,0.08));display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--accent);border:1px solid rgba(79,110,247,0.12)}
+        .feature-name{font-family:var(--font-display);font-size:18px;font-weight:600;margin-bottom:8px;letter-spacing:-0.01em}
+        .feature-desc{font-size:14px;color:var(--text-secondary);line-height:1.6}
+        .feature-hot{position:absolute;top:14px;right:14px;padding:3px 10px;background:rgba(0,198,255,0.12);border:1px solid rgba(0,198,255,0.2);border-radius:100px;font-size:10px;font-weight:600;color:var(--accent-3);text-transform:uppercase;letter-spacing:0.05em}
+
+        /* ===== Scenarios ===== */
+        .scenarios-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+        .scenario-card{position:relative;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);transition:all 0.35s ease;background:var(--bg-card)}
+        .scenario-card:hover{transform:translateY(-6px);border-color:var(--border-hover);box-shadow:0 24px 48px rgba(0,0,0,0.4)}
+        .scenario-image{width:100%;height:220px;object-fit:cover;display:block;transition:transform 0.5s ease}
+        .scenario-card:hover .scenario-image{transform:scale(1.05)}
+        .scenario-body{padding:28px 24px}
+        .scenario-icon{width:44px;height:44px;border-radius:var(--radius-md);background:linear-gradient(135deg,rgba(79,110,247,0.15),rgba(124,92,252,0.1));display:flex;align-items:center;justify-content:center;margin-bottom:14px;color:var(--accent)}
+        .scenario-name{font-family:var(--font-display);font-size:20px;font-weight:600;margin-bottom:6px}
+        .scenario-desc{font-size:13px;color:var(--text-secondary);line-height:1.6}
+        .scenario-tags{display:flex;gap:6px;margin-top:14px;flex-wrap:wrap}
+        .scenario-tag{padding:4px 10px;border-radius:100px;font-size:11px;background:rgba(255,255,255,0.03);border:1px solid var(--border);color:var(--text-secondary)}
+
+        /* ===== Showcase ===== */
+        .showcase-split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+        .showcase-image{width:100%;border-radius:var(--radius-lg);border:1px solid var(--border);box-shadow:0 16px 40px rgba(0,0,0,0.4)}
+        .showcase-features{display:flex;flex-direction:column;gap:20px}
+        .showcase-feature{display:flex;gap:16px;padding:20px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);transition:all 0.25s ease}
+        .showcase-feature:hover{border-color:var(--border-hover);background:var(--bg-card-hover)}
+        .showcase-feature-icon{width:40px;height:40px;border-radius:var(--radius-sm);background:rgba(79,110,247,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--accent)}
+        .showcase-feature-title{font-family:var(--font-display);font-size:15px;font-weight:600;margin-bottom:3px}
+        .showcase-feature-desc{font-size:13px;color:var(--text-secondary);line-height:1.5}
+
+        /* ===== Steps ===== */
+        .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+        .step-card{text-align:center;padding:40px 24px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);transition:all 0.3s ease}
+        .step-card:hover{border-color:var(--border-hover);background:var(--bg-card-hover)}
+        .step-number{width:56px;height:56px;margin:0 auto 20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:22px;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 8px 24px var(--accent-glow)}
+        .step-title{font-family:var(--font-display);font-size:18px;font-weight:600;margin-bottom:6px}
+        .step-desc{font-size:13px;color:var(--text-secondary);line-height:1.55}
+
+        /* ===== Languages ===== */
+        .langs-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;max-width:800px;margin:0 auto}
+        .lang-tag{padding:10px 20px;border-radius:100px;font-size:14px;font-weight:500;background:rgba(255,255,255,0.02);border:1px solid var(--border);color:var(--text-secondary);transition:all 0.25s ease}
+        .lang-tag:hover{background:rgba(79,110,247,0.08);border-color:rgba(79,110,247,0.2);color:#fff;transform:translateY(-2px)}
+        .lang-tag.highlight{background:rgba(79,110,247,0.1);border-color:rgba(79,110,247,0.2);color:var(--accent)}
+
+        /* ===== Testimonials ===== */
+        .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+        .testimonial-card{padding:36px 28px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);transition:all 0.3s ease}
+        .testimonial-card:hover{border-color:var(--border-hover);background:var(--bg-card-hover)}
+        .testimonial-header{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+        .testimonial-avatar{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid var(--border);transition:border-color 0.3s ease}
+        .testimonial-card:hover .testimonial-avatar{border-color:var(--accent)}
+        .testimonial-stars{display:flex;gap:2px;color:#F59E0B;font-size:13px}
+        .testimonial-text{font-size:15px;color:var(--text-secondary);line-height:1.7;margin-bottom:16px;font-style:italic;position:relative;padding-left:18px;border-left:2px solid rgba(79,110,247,0.2)}
+        .testimonial-name{font-size:14px;font-weight:600}
+        .testimonial-role{font-size:12px;color:var(--text-muted);margin-top:1px}
+
+        /* ===== FAQ ===== */
+        .faq-list{max-width:720px;margin:0 auto}
+        .faq-item{border-bottom:1px solid var(--border)}
+        .faq-question{width:100%;display:flex;align-items:center;justify-content:space-between;padding:22px 0;text-align:left;font-family:var(--font-display);font-size:17px;font-weight:600;color:var(--text-primary);transition:color 0.2s ease}
+        .faq-question:hover{color:var(--accent)}
+        .faq-arrow{width:28px;height:28px;border-radius:50%;flex-shrink:0;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all 0.3s ease}
+        .faq-item.active .faq-arrow{background:var(--accent);border-color:var(--accent);transform:rotate(180deg)}
+        .faq-answer{max-height:0;overflow:hidden;transition:all 0.35s ease}
+        .faq-item.active .faq-answer{max-height:300px;padding-bottom:22px}
+        .faq-answer p{font-size:14px;color:var(--text-secondary);line-height:1.7}
+
+        /* ===== CTA ===== */
+        .cta-section{text-align:center;position:relative;z-index:1}
+        .cta-card{max-width:700px;margin:0 auto;padding:64px 48px;background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius-xl);position:relative;overflow:hidden}
+        .cta-card::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:400px;height:400px;background:radial-gradient(circle,rgba(79,110,247,0.12),transparent 70%);border-radius:50%;pointer-events:none}
+        .cta-card>*{position:relative;z-index:1}
+        .cta-title{font-family:var(--font-display);font-size:clamp(28px,4vw,42px);font-weight:700;margin-bottom:12px;letter-spacing:-0.02em}
+        .cta-desc{font-size:16px;color:var(--text-secondary);margin-bottom:32px}
+        .cta-features{display:flex;justify-content:center;gap:32px;margin-bottom:36px;flex-wrap:wrap}
+        .cta-feature{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-secondary)}
+        .cta-feature svg{color:var(--accent)}
+        .btn-download{display:inline-flex;align-items:center;gap:12px;padding:18px 40px;border-radius:100px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;font-family:var(--font-display);font-size:17px;font-weight:600;box-shadow:0 8px 36px var(--accent-glow);transition:all 0.3s ease}
+        .btn-download:hover{transform:translateY(-3px);box-shadow:0 14px 48px rgba(79,110,247,0.5)}
+        .cta-note{font-size:12px;color:var(--text-muted);margin-top:16px}
+
+        /* ===== Footer ===== */
+        .footer{padding:60px 0 32px;border-top:1px solid var(--border);position:relative;z-index:1}
+        .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:40px}
+        .footer-brand{font-family:var(--font-display);font-size:18px;font-weight:700;margin-bottom:10px}
+        .footer-brand-desc{font-size:13px;color:var(--text-secondary);max-width:280px;line-height:1.7}
+        .footer-heading{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:16px}
+        .footer-links{display:flex;flex-direction:column;gap:10px}
+        .footer-link{font-size:13px;color:var(--text-secondary);transition:color 0.2s ease}
+        .footer-link:hover{color:#fff}
+        .footer-bottom{padding-top:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--text-muted)}
+
+        /* ===== Back to Top ===== */
+        .back-to-top{position:fixed;bottom:32px;right:32px;z-index:999;width:44px;height:44px;border-radius:50%;background:var(--bg-elevated);border:1px solid var(--border);color:#fff;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(12px);transition:all 0.3s ease;pointer-events:none;backdrop-filter:blur(10px)}
+        .back-to-top.visible{opacity:1;transform:translateY(0);pointer-events:auto}
+        .back-to-top:hover{background:rgba(255,255,255,0.08);border-color:var(--border-hover)}
+
+        /* Animations */
+        .reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
+        .reveal.visible{opacity:1;transform:translateY(0)}
+        .reveal-delay-1{transition-delay:0.1s}.reveal-delay-2{transition-delay:0.2s}
+
+        /* Responsive */
+        @media(max-width:1024px){
+            .hero-inner,.showcase-split{grid-template-columns:1fr}
+            .hero-image-wrap{max-width:500px;margin:0 auto}
+            .features-grid,.scenarios-grid,.testimonials-grid{grid-template-columns:repeat(2,1fr)}
+        }
+        @media(max-width:768px){
+            .nav{display:none}.nav-toggle{display:flex}
+            .hero{padding:120px 0 60px}
+            .features-grid,.scenarios-grid,.testimonials-grid,.steps-grid{grid-template-columns:1fr}
+            .hero-meta{flex-wrap:wrap;gap:16px}
+            .section{padding:80px 0}.container{padding:0 20px}
+            .footer-grid{grid-template-columns:1fr;gap:32px}
+            .footer-bottom{flex-direction:column;gap:16px;text-align:center}
+            .cta-card{padding:48px 24px}
+            .cta-features{flex-direction:column;align-items:center;gap:12px}
+            .showcase-split{gap:32px}
+        }
+        @media(prefers-reduced-motion:reduce){
+            html{scroll-behavior:auto}
+            *,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}
+        }
+    </style>
+</head>
+<body>
+
+<!-- Aurora Background -->
+<div class="aurora"><div class="aurora-blob"></div><div class="aurora-blob"></div><div class="aurora-blob"></div></div>
+<div class="grid-overlay"></div>
+
+<!-- ===== Header ===== -->
+<header class="header" id="header">
+    <div class="header-inner">
+        <a href="#hero" class="logo">
+            <div class="logo-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10"/></svg>
+            </div>
+            hello<span style="color:var(--accent)">word</span>
+        </a>
+        <nav class="nav">
+            <a href="#features" class="nav-link">功能</a>
+            <a href="#scenarios" class="nav-link">场景</a>
+            <a href="#showcase" class="nav-link">体验</a>
+            <a href="#testimonials" class="nav-link">评价</a>
+            <a href="#faq" class="nav-link">FAQ</a>
+            <a href="#download" class="nav-cta" onclick="k2()">免费下载</a>
+        </nav>
+        <button class="nav-toggle" id="navToggle" aria-label="菜单" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+<div class="nav-overlay" id="navOverlay"></div>
+<div class="nav-mobile" id="navMobile">
+    <a href="#features">核心功能</a>
+    <a href="#scenarios">应用场景</a>
+    <a href="#showcase">翻译体验</a>
+    <a href="#steps">快速上手</a>
+    <a href="#testimonials">用户评价</a>
+    <a href="#faq">常见问题</a>
+    <a href="#download" class="nav-cta" onclick="k2()">免费下载</a>
+</div>
+
+<!-- ===== Hero ===== -->
+<section class="hero" id="hero">
+    <div class="container">
+        <div class="hero-inner">
+            <div class="reveal">
+                <div class="hero-badge">
+                    <span class="hero-badge-dot"></span>支持桌面端 · 永久免费
+                </div>
+                <h1 class="hero-title">
+                    打破语言壁垒<br>
+                    <span class="gradient-text">一键翻译全世界</span>
+                </h1>
+                <p class="hero-desc">
+                    hello word 是一款免费桌面翻译工具。集成 AI 翻译引擎，支持 200+ 语种互译，划词即翻、截图翻译、文档翻译——让语言不再成为你探索世界的障碍。
+                </p>
+                <div class="hero-actions">
+                    <a href="#download" class="btn btn-primary" onclick="k2()">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        免费下载桌面版
+                    </a>
+                    <a href="#scenarios" class="btn btn-ghost">探索使用场景</a>
+                </div>
+                <div class="hero-meta">
+                    <div class="hero-meta-item">
+                        <div class="hero-meta-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+                        多平台兼容
+                    </div>
+                    <div class="hero-meta-item">
+                        <div class="hero-meta-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10"/></svg></div>
+                        200+ 语种支持
+                    </div>
+                    <div class="hero-meta-item">
+                        <div class="hero-meta-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                        完全免费 · 无广告
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image-wrap reveal reveal-delay-1">
+                <img class="hero-image" src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=700&h=500&fit=crop&q=80" alt="使用 hello word 翻译软件办公" loading="eager" width="700" height="500">
+                <div class="hero-image-badge">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                    <div>
+                        <div class="hero-image-badge-num">4.9</div>
+                        <div class="hero-image-badge-label">用户评分 · 50万+ 下载</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Core Features ===== -->
+<section class="section" id="features">
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="section-label">核心功能</div>
+            <h2 class="section-title">六大<span class="gradient-text">杀手级能力</span>，重塑翻译体验</h2>
+            <p class="section-subtitle">每一功能都围绕"快、准、稳"设计，让翻译工具真正融入你的工作流。</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card reveal">
+                <span class="feature-hot">核心</span>
+                <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 15l-6 6m0 0l-6-6m6 6V3"/></svg></div>
+                <h3 class="feature-name">划词即翻</h3>
+                <p class="feature-desc">任意应用中选中文字，按 <b style="color:#fff">Ctrl+Shift+T</b> 弹出翻译浮窗。支持一键替换原文、朗读发音、复制译文。浏览网页、阅读 PDF、编写文档——不打断你的任何操作。</p>
+            </div>
+            <div class="feature-card reveal reveal-delay-1">
+                <span class="feature-hot">核心</span>
+                <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><circle cx="8" cy="8" r="2"/><path d="M8 10h8"/></svg></div>
+                <h3 class="feature-name">截图 OCR 翻译</h3>
+                <p class="feature-desc">遇到图片文字、不可选中的 PDF、游戏内文本？<b style="color:#fff">按 Ctrl+Shift+S</b> 框选区域，AI 自动识别文字并翻译。支持中英日韩等 80+ 语种的 OCR 识别。</p>
+            </div>
+            <div class="feature-card reveal reveal-delay-2">
+                <span class="feature-hot">核心</span>
+                <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+                <h3 class="feature-name">全文档翻译</h3>
+                <p class="feature-desc">拖拽 PDF、Word、Excel、PPT、TXT 文件到窗口，自动识别语言并翻译。完美保留原文<b style="color:#fff">排版、表格、图片位置</b>，译文可直接导出使用。</p>
+            </div>
+            <div class="feature-card reveal">
+                <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10"/></svg></div>
+                <h3 class="feature-name">200+ 语种互译</h3>
+                <p class="feature-desc">覆盖英语、日语、韩语、法语、德语、西班牙语、俄语、阿拉伯语等主流语种，以及泰语、越南语、印尼语等小语种。每种语言均经过<b style="color:#fff">母语译员校准</b>。</p>
+            </div>
+            <div class="feature-card reveal reveal-delay-1">
+                <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l22 22"/><path d="M16.72 10.06A10.94 10.94 0 0 1 19 12.55"/><path d="M5 12.55a10.94 10.94 0 0 1 5.17-9.31"/><path d="M10.71 5.05A7 7 0 0 1 15.4 8.5"/></svg></div>
+                <h3 class="feature-name">离线翻译模式</h3>
+                <p class="feature-desc">下载离线模型包后（中英约 300MB），<b style="color:#fff">断网也能正常翻译</b>。飞机上、会议室、安全敏感场景——你的文本永远不会离开你的设备。</p>
+            </div>
+            <div class="feature-card reveal reveal-delay-2">
+                <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+                <h3 class="feature-name">AI 上下文引擎</h3>
+                <p class="feature-desc">基于大语言模型的语义理解，<b style="color:#fff">非逐字直译，而是理解语境</b>。自动识别文本领域（技术/法律/医学/文学），切换翻译风格。支持 <b style="color:#fff">正式 / 口语 / 学术</b> 三种风格。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Scenarios ===== -->
+<section class="section" id="scenarios">
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="section-label">应用场景</div>
+            <h2 class="section-title">多元化产品，满足<span class="gradient-text">多样化场景</span></h2>
+            <p class="section-subtitle">无论你是学生、商务人士还是自由职业者，hello word 都能完美适配你的翻译需求。</p>
+        </div>
+        <div class="scenarios-grid">
+            <div class="scenario-card reveal">
+                <img class="scenario-image" src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&h=400&fit=crop&q=80" alt="学习科研场景" loading="lazy" width="600" height="400">
+                <div class="scenario-body">
+                    <div class="scenario-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+                    <h3 class="scenario-name">学习与科研</h3>
+                    <p class="scenario-desc">阅读外文文献、查阅英文资料、撰写论文摘要。划词即翻让你专注于阅读本身，PDF 文档翻译完整保留原文排版与引用。</p>
+                    <div class="scenario-tags">
+                        <span class="scenario-tag">文献阅读</span><span class="scenario-tag">论文写作</span><span class="scenario-tag">PDF 翻译</span>
+                    </div>
+                </div>
+            </div>
+            <div class="scenario-card reveal reveal-delay-1">
+                <img class="scenario-image" src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=400&fit=crop&q=80" alt="工作商务场景" loading="lazy" width="600" height="400">
+                <div class="scenario-body">
+                    <div class="scenario-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+                    <h3 class="scenario-name">工作与商务</h3>
+                    <p class="scenario-desc">处理英文邮件、翻译商务合同、阅读产品文档。文档翻译支持批量操作，离线模式确保敏感商业文件不外泄。</p>
+                    <div class="scenario-tags">
+                        <span class="scenario-tag">邮件翻译</span><span class="scenario-tag">合同处理</span><span class="scenario-tag">办公效率</span>
+                    </div>
+                </div>
+            </div>
+            <div class="scenario-card reveal reveal-delay-2">
+                <img class="scenario-image" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&h=400&fit=crop&q=80" alt="日常社交场景" loading="lazy" width="600" height="400">
+                <div class="scenario-body">
+                    <div class="scenario-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+                    <h3 class="scenario-name">日常与社交</h3>
+                    <p class="scenario-desc">浏览海外网站、看外语视频、跟外国朋友聊天。截图翻译快速看懂任何界面上的文字，划词翻译帮你秒回多语言消息。</p>
+                    <div class="scenario-tags">
+                        <span class="scenario-tag">海外资讯</span><span class="scenario-tag">社交聊天</span><span class="scenario-tag">娱乐学习</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Showcase ===== -->
+<section class="section" id="showcase">
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="section-label">翻译体验</div>
+            <h2 class="section-title">简洁，但不<span class="gradient-text">简单</span></h2>
+            <p class="section-subtitle">每一个像素都经过精心打磨，只为给你最好的翻译体验。</p>
+        </div>
+        <div class="showcase-split">
+            <img class="showcase-image reveal" src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=700&h=500&fit=crop&q=80" alt="hello word 翻译软件界面" loading="lazy" width="700" height="500">
+            <div class="showcase-features">
+                <div class="showcase-feature reveal reveal-delay-1">
+                    <div class="showcase-feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+                    <div>
+                        <div class="showcase-feature-title">原生桌面体验</div>
+                        <div class="showcase-feature-desc">适配主流桌面系统，支持分屏、虚拟桌面、系统托盘常驻，与你的工作环境完美融合。</div>
+                    </div>
+                </div>
+                <div class="showcase-feature reveal reveal-delay-1">
+                    <div class="showcase-feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+                    <div>
+                        <div class="showcase-feature-title">极速响应</div>
+                        <div class="showcase-feature-desc">启动 &lt; 0.5 秒，翻译结果 &lt; 0.3 秒。常驻后台，内存占用仅 80MB。</div>
+                    </div>
+                </div>
+                <div class="showcase-feature reveal reveal-delay-2">
+                    <div class="showcase-feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg></div>
+                    <div>
+                        <div class="showcase-feature-title">深色/浅色主题</div>
+                        <div class="showcase-feature-desc">自动跟随系统主题切换，或手动选择。深色模式下低亮度护眼，浅色模式下清爽明亮。</div>
+                    </div>
+                </div>
+                <div class="showcase-feature reveal reveal-delay-2">
+                    <div class="showcase-feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg></div>
+                    <div>
+                        <div class="showcase-feature-title">语音朗读</div>
+                        <div class="showcase-feature-desc">支持原文和译文的 TTS 语音朗读，20+ 语种自然发音，语速可调，边听边学。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Steps ===== -->
+<section class="section" id="steps">
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="section-label">快速上手</div>
+            <h2 class="section-title">三分钟<span class="gradient-text">搞定一切</span></h2>
+            <p class="section-subtitle">下载、安装、使用——比泡一杯咖啡还简单。</p>
+        </div>
+        <div class="steps-grid">
+            <div class="step-card reveal">
+                <div class="step-number">1</div>
+                <h3 class="step-title">下载安装</h3>
+                <p class="step-desc">下载安装包（64.2 MB），双击运行，30 秒完成。兼容主流桌面系统，Intel / ARM 双架构支持。</p>
+            </div>
+            <div class="step-card reveal reveal-delay-1">
+                <div class="step-number">2</div>
+                <h3 class="step-title">设置偏好</h3>
+                <p class="step-desc">选择常用语种对、自定义快捷键、下载离线模型包。深色/浅色主题随心切换，打造你的专属翻译工作台。</p>
+            </div>
+            <div class="step-card reveal reveal-delay-2">
+                <div class="step-number">3</div>
+                <h3 class="step-title">开始翻译</h3>
+                <p class="step-desc">划词即翻、截图翻译、拖拽文档——三种入口覆盖所有场景。最快 0.3 秒出结果，让你忘记翻译工具的存在。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Languages ===== -->
+<section class="section" id="languages">
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="section-label">支持语种</div>
+            <h2 class="section-title"><span class="gradient-text">200+</span> 语种全覆盖</h2>
+            <p class="section-subtitle">从主流到稀有，每一种语言都值得被准确翻译。</p>
+        </div>
+        <div class="langs-grid reveal">
+            <span class="lang-tag highlight">中文</span>
+            <span class="lang-tag highlight">English</span>
+            <span class="lang-tag">日本語</span>
+            <span class="lang-tag">한국어</span>
+            <span class="lang-tag">Français</span>
+            <span class="lang-tag">Deutsch</span>
+            <span class="lang-tag">Español</span>
+            <span class="lang-tag">Português</span>
+            <span class="lang-tag">Русский</span>
+            <span class="lang-tag">العربية</span>
+            <span class="lang-tag">Italiano</span>
+            <span class="lang-tag">Nederlands</span>
+            <span class="lang-tag">Polski</span>
+            <span class="lang-tag">Türkçe</span>
+            <span class="lang-tag">Tiếng Việt</span>
+            <span class="lang-tag">ไทย</span>
+            <span class="lang-tag">Bahasa Indonesia</span>
+            <span class="lang-tag">Svenska</span>
+            <span class="lang-tag">Українська</span>
+            <span class="lang-tag">हिन्दी</span>
+            <span class="lang-tag">... 等 200+ 语种</span>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Testimonials (真实业务场景) ===== -->
+<section class="section" id="testimonials">
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="section-label">用户评价</div>
+            <h2 class="section-title">来自真实用户的<span class="gradient-text">使用反馈</span></h2>
+            <p class="section-subtitle">50 万+ 用户的信赖之选，听听他们怎么说。</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card reveal">
+                <div class="testimonial-header">
+                    <img class="testimonial-avatar" src="img/1.png" alt="王同学头像" width="52" height="52" loading="lazy">
+                    <div>
+                        <div class="testimonial-name">王同学</div>
+                        <div class="testimonial-role">在读研究生</div>
+                    </div>
+                </div>
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">每天看英文文献的必备工具。以前要来回切换网页翻译，现在选中段落就能直接看译文，阅读效率提高了不止一倍。导师都问我最近怎么读文献这么快。</p>
+            </div>
+            <div class="testimonial-card reveal reveal-delay-1">
+                <div class="testimonial-header">
+                    <img class="testimonial-avatar" src="img/66.jpg" alt="刘姐头像" width="52" height="52" loading="lazy">
+                    <div>
+                        <div class="testimonial-name">刘姐</div>
+                        <div class="testimonial-role">外贸公司业务员</div>
+                    </div>
+                </div>
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">做外贸五六年了，每天要处理十几封英文邮件和产品资料。hello word 的文档翻译能直接保留表格和排版，省了我太多排版的时间。客户还夸我邮件写得越来越地道了。</p>
+            </div>
+            <div class="testimonial-card reveal reveal-delay-2">
+                <div class="testimonial-header">
+                    <img class="testimonial-avatar" src="img/33.jpg" alt="小陈头像" width="52" height="52" loading="lazy">
+                    <div>
+                        <div class="testimonial-name">小陈</div>
+                        <div class="testimonial-role">自由职业者 · 自媒体作者</div>
+                    </div>
+                </div>
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">经常要参考国外的文章和视频做内容，截图翻译功能太好用了，YouTube 上的英文教程、推特上的外文帖子，截图就能看懂。做一期国外资讯整理比以前快太多了。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FAQ (常用问题) ===== -->
+<section class="section" id="faq">
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="section-label">常见问题</div>
+            <h2 class="section-title"><span class="gradient-text">常见问题</span>解答</h2>
+        </div>
+        <div class="faq-list reveal">
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    这个软件真的完全免费吗？有没有套路？
+                    <span class="faq-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+                </button>
+                <div class="faq-answer"><p>是的，hello word 对个人用户<b>永久免费，没有广告，没有功能限制，也没有使用次数限制</b>。你可以放心使用，不会突然弹出付费窗口或者要求你购买会员。</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    翻译质量和网页翻译比怎么样？
+                    <span class="faq-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+                </button>
+                <div class="faq-answer"><p>hello word 使用 AI 上下文引擎，能根据整段内容理解语义再翻译，<b>不是逐句直译</b>。日常使用中，翻译质量与主流在线翻译持平甚至更好，尤其是专业文档和长篇文章的翻译更流畅自然。</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    没网的时候能用吗？
+                    <span class="faq-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+                </button>
+                <div class="faq-answer"><p>可以。在设置里下载离线翻译包后（中英约 300MB），<b>不联网也能正常翻译</b>。离线翻译质量接近在线模式，适合飞机上、出差途中或者网络不稳定的环境使用。</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" aria-expanded="false">
+                    我翻译的内容会被泄露吗？
+                    <span class="faq-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+                </button>
+                <div class="faq-answer"><p><b>不会。</b>离线模式下翻译完全在本地完成。在线模式也只是将文本加密传输到翻译引擎，翻译完成后<b>不存储、不记录、不用于任何其他用途</b>。你也可以随时清除本地的翻译记录。</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Download CTA ===== -->
+<section class="section" id="download">
+    <div class="container">
+        <div class="cta-section">
+            <div class="cta-card reveal">
+                <h2 class="cta-title">准备好开始了吗？</h2>
+                <p class="cta-desc">完全免费，即下即用。让每一次翻译都轻松自如。</p>
+                <div class="cta-features">
+                    <span class="cta-feature"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>永久免费</span>
+                    <span class="cta-feature"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>无广告</span>
+                    <span class="cta-feature"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>多平台兼容</span>
+                    <span class="cta-feature"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>64.2 MB</span>
+                </div>
+                <a href="#" class="btn-download" onclick="k2()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    免费下载桌面版（64.2 MB）
+                </a>
+                <p class="cta-note">版本 3.2.1 · 2025 年 7 月更新 · 兼容主流桌面系统 · Intel / ARM 双架构</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-brand">hello word 翻译</div>
+                <p class="footer-brand-desc">免费、高效、安全的桌面翻译软件。让语言不再成为获取知识的障碍。</p>
+            </div>
+            <div>
+                <div class="footer-heading">产品</div>
+                <div class="footer-links">
+                    <a href="#features" class="footer-link">核心功能</a>
+                    <a href="#scenarios" class="footer-link">应用场景</a>
+                    <a href="#showcase" class="footer-link">界面体验</a>
+                    <a href="#download" class="footer-link" onclick="k2()">免费下载</a>
+                </div>
+            </div>
+            <div>
+                <div class="footer-heading">支持</div>
+                <div class="footer-links">
+                    <a href="#faq" class="footer-link">常见问题</a>
+                    <a href="#" class="footer-link" onclick="k2()">更新日志</a>
+                    <a href="#" class="footer-link" onclick="k2()">用户反馈</a>
+                    <a href="#" class="footer-link" onclick="k2()">隐私政策</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2025 hello word. 保留所有权利。</span>
+        </div>
+    </div>
+</footer>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" aria-label="返回顶部">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+(function(){
+    'use strict';
+    const header=document.getElementById('header'),
+          navToggle=document.getElementById('navToggle'),
+          navMobile=document.getElementById('navMobile'),
+          navOverlay=document.getElementById('navOverlay'),
+          backToTop=document.getElementById('backToTop'),
+          navLinks=document.querySelectorAll('.nav-link'),
+          reveals=document.querySelectorAll('.reveal');
+
+    let ticking=false;
+    function onScroll(){
+        if(!ticking){
+            requestAnimationFrame(function(){
+                const y=window.scrollY;
+                header.classList.toggle('scrolled',y>20);
+                backToTop.classList.toggle('visible',y>600);
+                const sections=document.querySelectorAll('section[id]');
+                let cur='';
+                sections.forEach(function(s){if(y>=s.offsetTop-200)cur=s.getAttribute('id');});
+                navLinks.forEach(function(l){var h=l.getAttribute('href');l.classList.toggle('active',h==='#'+cur);});
+                ticking=false;
+            });
+            ticking=true;
+        }
+    }
+    window.addEventListener('scroll',onScroll,{passive:true});
+
+    function closeMobile(){
+        navToggle.classList.remove('active');navMobile.classList.remove('active');
+        navOverlay.classList.remove('active');navToggle.setAttribute('aria-expanded','false');
+    }
+    navToggle.addEventListener('click',function(){
+        navToggle.classList.contains('active')?closeMobile():(navToggle.classList.add('active'),navMobile.classList.add('active'),navOverlay.classList.add('active'),navToggle.setAttribute('aria-expanded','true'));
+    });
+    navOverlay.addEventListener('click',closeMobile);
+    navMobile.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeMobile);});
+
+    document.querySelectorAll('.faq-item').forEach(function(item){
+        item.querySelector('.faq-question').addEventListener('click',function(){
+            var is=item.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(function(fi){fi.classList.remove('active');fi.querySelector('.faq-question').setAttribute('aria-expanded','false');});
+            if(!is){item.classList.add('active');item.querySelector('.faq-question').setAttribute('aria-expanded','true');}
+        });
+    });
+
+    if('IntersectionObserver' in window){
+        var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -20px 0px'});
+        reveals.forEach(function(el){obs.observe(el);});
+    }else{reveals.forEach(function(el){el.classList.add('visible');});}
+
+    backToTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+    onScroll();
+})();
+</script>
+</body>
+</html>
